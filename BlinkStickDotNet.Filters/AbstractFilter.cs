@@ -1,22 +1,41 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 
 namespace BlinkStickDotNet.Filters
 {
+    /// <summary>
+    /// Abstract class for implementation convinience.
+    /// <para>
+    /// Implement <see cref="ConvertOnGet(RgbColorF)"/> and <see cref="ConvertOnSet(RgbColorF)"/> in order to 
+    /// create filter. <see cref="ConvertOnGet(RgbColorF)"/> should provide inverse transformation 
+    /// to <see cref="ConvertOnSet(RgbColorF)"/>.
+    /// </para>
+    /// <para>
+    /// If you want to change filtration parameters in run time you shold implement 
+    /// specified properties similar to <seealso cref="BrightnessFilter.Brightness"/> 
+    /// </para>
+    /// </summary>
     public abstract class AbstractFilter : IFilter
     {
+        /// <summary>
+        /// Base constructor for typical filters
+        /// </summary>
+        /// <param name="underlyingFilter"></param>
         protected AbstractFilter(IFilter underlyingFilter)
         {
             m_underlyingFilter = underlyingFilter;
             m_colors = underlyingFilter.GetAll();
         }
 
+        /// <summary>
+        /// Constructor for special purposes - see: <see cref="BlinkStickAdapter"/>
+        /// </summary>
         protected AbstractFilter()
         {
-
         }
 
+        /// <summary>
+        /// Cache for current colors. Useful in case of changing filtering parameters (ex: <see cref="BrightnessFilter"/>
+        /// </summary>
         protected RgbColorF[] m_colors = null;
         protected IFilter m_underlyingFilter = null;
 
@@ -74,66 +93,5 @@ namespace BlinkStickDotNet.Filters
                 return m_colors.Length;
             }
         }
-
-        public bool IsReadOnly
-        {
-            get
-            {
-                return true;
-            }
-        }
-
-        public void Add(RgbColorF item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Clear()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Contains(RgbColorF item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void CopyTo(RgbColorF[] array, int arrayIndex)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerator<RgbColorF> GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int IndexOf(RgbColorF item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Insert(int index, RgbColorF item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Remove(RgbColorF item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveAt(int index)
-        {
-            throw new NotImplementedException();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
     }
-
-
-
 }

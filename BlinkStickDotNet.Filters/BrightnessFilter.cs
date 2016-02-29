@@ -1,5 +1,8 @@
 ﻿namespace BlinkStickDotNet.Filters
 {
+    /// <summary>
+    /// Allows to adjust the brightness.
+    /// </summary>
     public class BrightnessFilter : AbstractFilter
     {
         public BrightnessFilter(IFilter underlyingFilter) : base(underlyingFilter)
@@ -8,6 +11,9 @@
 
         private double m_brightness = 1d;
 
+        /// <summary>
+        /// Gets or sets brightness factor (0 .. 1.0)
+        /// </summary>
         public double Brightness
         {
             get

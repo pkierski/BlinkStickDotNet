@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace BlinkStickDotNet.Filters
+﻿namespace BlinkStickDotNet.Filters
 {
+    /// <summary>
+    /// Immutable RGB color representation. Values range: 0..1d
+    /// </summary>
     public class RgbColorF
     {
         public double R { get; private set; }
@@ -37,10 +37,34 @@ namespace BlinkStickDotNet.Filters
 
     }
 
-    public interface IFilter : IList<RgbColorF>
+    /// <summary>
+    /// Common interface for all filters in stack
+    /// </summary>
+    public interface IFilter
     {
+        /// <summary>
+        /// Sets all LEDs with specified colors
+        /// </summary>
+        /// <param name="all">Colors to set</param>
         void SetAll(RgbColorF[] all);
+
+        /// <summary>
+        /// Get all LEDs colors as array with <see cref="Count"/> lenght
+        /// </summary>
+        /// <returns></returns>
         RgbColorF[] GetAll();
+
+        /// <summary>
+        /// Gets or sets specified LED
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        RgbColorF this[int index] { get; set; }
+
+        /// <summary>
+        /// Gets number of LEDs
+        /// </summary>
+        int Count { get; }
     }
 
 }

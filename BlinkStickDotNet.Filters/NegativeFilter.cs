@@ -1,5 +1,8 @@
 ﻿namespace BlinkStickDotNet.Filters
 {
+    /// <summary>
+    /// Allows to inverse colors for all LEDs
+    /// </summary>
     public class NegativeFilter : AbstractFilter
     {
         public NegativeFilter(IFilter f) : base(f)
@@ -8,6 +11,9 @@
 
         private bool m_enable = false;
 
+        /// <summary>
+        /// Enables/disables colors inversion
+        /// </summary>
         public bool Enable
         {
             get
