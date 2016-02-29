@@ -67,8 +67,8 @@ namespace BlinkStickDotNet.Filters
             byte[] colorData = new byte[3 * all.Length];
             for(int i = 0; i < all.Length; ++i)
             {
-                colorData[3 * i + 0] = (byte)(all[i].R * 255d);
-                colorData[3 * i + 1] = (byte)(all[i].G * 255d);
+                colorData[3 * i + 0] = (byte)(all[i].G * 255d);
+                colorData[3 * i + 1] = (byte)(all[i].R * 255d);
                 colorData[3 * i + 2] = (byte)(all[i].B * 255d);
             }
             m_blinkStick.SetColors(0, colorData);

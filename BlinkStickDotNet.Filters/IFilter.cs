@@ -35,6 +35,10 @@
             return RgbColor.FromRgb((int)(R * 255), (int)(G * 255), (int)(B * 255));
         }
 
+        public override string ToString()
+        {
+            return string.Format("R: {0}, G: {1}, B: {2}", R, G, B);
+        }
     }
 
     /// <summary>

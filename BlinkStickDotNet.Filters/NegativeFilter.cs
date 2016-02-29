@@ -23,7 +23,7 @@
             }
             set
             {
-                m_enable = true;
+                m_enable = value;
                 SetAll(m_colors);
             }
         }

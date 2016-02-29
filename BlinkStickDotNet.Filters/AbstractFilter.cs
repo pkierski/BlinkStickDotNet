@@ -39,17 +39,20 @@ namespace BlinkStickDotNet.Filters
         protected RgbColorF[] m_colors = null;
         protected IFilter m_underlyingFilter = null;
 
-        public virtual void SetAll(RgbColorF[] all)
+        public virtual void SetAll(RgbColorF[] values)
         {
-            if (all == null)
+            if (values == null)
                 throw new ArgumentNullException();
 
-            if (all.Length != Count)
-                throw new ArgumentException(string.Format("Array with lenght {0} expected, {1} used", all.Length, Count));
+            if (values.Length != Count)
+                throw new ArgumentException(string.Format("Array with lenght {0} expected, {1} used", values.Length, Count));
 
-            RgbColorF[] temp = new RgbColorF[all.Length];
+            RgbColorF[] temp = new RgbColorF[values.Length];
             for (int i = 0; i < m_colors.Length; ++i)
-                temp[i] = ConvertOnSet(all[i]);
+            {
+                m_colors[i] = values[i];
+                temp[i] = ConvertOnSet(values[i]);
+            }
 
             m_underlyingFilter.SetAll(temp);
         }
