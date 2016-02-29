@@ -29,9 +29,6 @@ namespace BrightnessAndNegative
                     System.Threading.Thread.Sleep(10);
                 }
 
-                negativeFilter.Enable = true;
-                negativeFilter.Enable = false;
-
                 // fade out and in
                 Console.WriteLine("press any key to fade out and in...");
                 Console.ReadKey();
@@ -54,6 +51,9 @@ namespace BrightnessAndNegative
                 Console.ReadKey();
                 negativeFilter.Enable = false;
 
+                // final fade out
+                Console.WriteLine("press any key to fade out...");
+                Console.ReadKey();
                 fadeOut(brightnessFilter);
 
                 blinkStickDevice.CloseDevice();
